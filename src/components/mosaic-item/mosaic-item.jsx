@@ -1,9 +1,9 @@
 import React from 'react';
-
+import { withRouter } from 'react-router-dom';
 import './mosaic-item.scss';
 
-const MosaicItem = ({title,image,size='normal'}) => (
-    <div className={`${size} mosaic-item`}>
+const MosaicItem = ({title,image,size='normal', history, linkUrl, match}) => (
+    <div className={`${size} mosaic-item`} onClick={()=> history.push(`${match.url}${linkUrl}`)}>
         <div style={
             {backgroundImage:`url(${image})`}
         }  className="background-image">
@@ -20,4 +20,4 @@ const MosaicItem = ({title,image,size='normal'}) => (
     </div>
 );
 
-export default MosaicItem;
+export default withRouter(MosaicItem);
