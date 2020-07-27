@@ -13,6 +13,35 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_MEASUREMENT
 };
 
+export const createUserProfileDocument = async (userAuth, data) => {
+    try{
+        var userRef,
+        snap;
+        if(userAuth){
+            userRef = firestore.doc(`users/${userAuth.uid}`);
+            snap = await userRef.get();
+
+            console.log(snap);
+            console.log(snap.exists);
+
+            if(!snap.exists){
+                let {displayName, email} = userAuth;
+                let createdAt = new Date();
+
+                await userRef.set({
+                    displayName,
+                    email,
+                    createdAt,
+                    ...data
+                });
+            }
+        }
+    }catch(e){
+        console.error(`FIREBASE@createUserProfileDocument: ${e}`);
+    }
+    return userRef;
+};
+
 firebase.initializeApp(firebaseConfig);
 
 export const auth = firebase.auth();

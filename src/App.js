@@ -7,7 +7,7 @@ import HomePage from './pages/homepage';
 import ShopPage from './pages/shop/shop';
 import SignPage from './pages/sign/sign';
 
-import { auth } from './firebase/firebase.utils';
+import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
 class App extends React.Component {
   constructor(){
@@ -21,8 +21,18 @@ class App extends React.Component {
   unsubscribeFromAuth = null;
 
   componentDidMount(){
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(currentUser =>{
-      this.setState({currentUser})
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth =>{
+      if(userAuth){
+        const ref = await createUserProfileDocument(userAuth);
+        ref.onSnapshot(snap=>{
+          this.setState({
+            currentUser: {
+              id: snap.id,
+              ...snap.data()
+            }
+          })
+        });
+      }
     });
   }
 
@@ -31,11 +41,8 @@ class App extends React.Component {
   }
 
   render(){
-    console.log(process.env);
     return (
       <div className="app">
-        {process.env.NODE_ENV}
-        {process.env.REACT_APP_FIREBASE_API_KEY}
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />

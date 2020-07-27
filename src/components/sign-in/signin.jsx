@@ -33,7 +33,7 @@ class SignIn extends React.Component {
 
     render(){
         return (
-            <article className="sign-in">
+            <article className="sign-in sign-form">
                 <header className="title">
                     <h2>Already have an account?</h2>
                     <p>Sign in with your email and password.</p>
