@@ -1,0 +1,22 @@
+.custom-button {
+    border-radius: .3em;
+    background-color: black;
+    color: white;
+    border: 1px solid white;
+    cursor: pointer;
+    padding: .3em 1em;
+    min-width: 60%;
+    margin: 1em auto;
+
+    &.google-sign-in {
+      background-color: #4285f4;
+        color: white;
+    }
+  
+    &:hover {
+      background-color: white;
+      color: black;
+      border: 1px solid black;
+    }
+  }
+  

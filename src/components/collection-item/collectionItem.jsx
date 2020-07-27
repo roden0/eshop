@@ -4,7 +4,7 @@ import './collectionItem.scss';
 
 const CollectionItem = ({id,name,price,imageUrl}) => (
     <li className="collection-item">
-        <figure 
+        <figure load="lazy"
         style={{backgroundImage:`url(${imageUrl})`}}
         className="image">
         </figure>

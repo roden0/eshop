@@ -3,12 +3,12 @@ import React from 'react';
 import './mosaic-item.scss';
 
 const MosaicItem = ({title,imageUrl,size='normal'}) => (
-    <div className={`${size} mosaic-item`}>
-        <div style={
+    <article className={`${size} mosaic-item`}>
+        <figure style={
             {backgroundImage:`url(${imageUrl})`}
         }  className="background-image">
 
-        </div>
+        </figure>
         <div className="content">
             <h1 className="card-title">
                 {title.toUpperCase()}
@@ -17,7 +17,7 @@ const MosaicItem = ({title,imageUrl,size='normal'}) => (
                 Section description
             </span>
         </div>
-    </div>
+    </article>
 );
 
 export default MosaicItem;
