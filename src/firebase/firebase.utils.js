@@ -3,14 +3,14 @@ import 'firebase/auth';
 import 'firebase/database';
 
 const firebaseConfig = {
-    apiKey: process.env.FIREBASE_API_KEY,
-    authDomain: "seres-shop.firebaseapp.com",
-    databaseURL: "https://seres-shop.firebaseio.com",
-    projectId: "seres-shop",
-    storageBucket: "seres-shop.appspot.com",
-    messagingSenderId: "86283460326",
-    appId: "1:86283460326:web:a091d39fdb95a6251da527",
-    measurementId: "G-KENXMKMFYR"
+    apiKey: process.env.REACT_APP_FIREBASE_KEY,
+    authDomain: process.env.REACT_APP_DOMAIN,
+    databaseURL: process.env.REACT_APP_URL,
+    projectId: process.env.REACT_APP_ID,
+    storageBucket: process.env.REACT_APP_BUCKET,
+    messagingSenderId: process.env.REACT_APP_SENDER,
+    appId: process.env.REACT_APP_APP,
+    measurementId: process.env.REACT_APP_MEASUREMENT
 };
 
 firebase.initializeApp(firebaseConfig);

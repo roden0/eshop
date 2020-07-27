@@ -31,8 +31,11 @@ class App extends React.Component {
   }
 
   render(){
+    console.log(process.env);
     return (
       <div className="app">
+        {process.env.NODE_ENV}
+        {process.env.REACT_APP_FIREBASE_API_KEY}
         <Header currentUser={this.state.currentUser} />
         <Switch>
           <Route exact path="/" component={HomePage} />
