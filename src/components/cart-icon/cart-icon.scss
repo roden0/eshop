@@ -1,0 +1,19 @@
+.basket {
+    width: 3em;
+    height: 3em;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+
+    .basket-icon {
+        width: 3em;
+        height: 3em;
+    }
+
+    .item-count {
+        position: absolute;
+        top: 1.2em;
+    }
+}
