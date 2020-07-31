@@ -1,11 +1,11 @@
 .custom-button {
+  font-size: 1.3em;
     border-radius: .3em;
     background-color: black;
     color: white;
     border: 1px solid white;
     cursor: pointer;
     padding: .3em 1em;
-    min-width: 60%;
     margin: 1em auto;
 
     &.google-sign-in {
