@@ -3,7 +3,7 @@ import {Link} from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/human.svg';
 
 import CartIcon from '../cart-icon/cart-icon';
-import { CartDropDown } from '../cart-dropdown/cart-dropdown';
+import CartDropDown from '../cart-dropdown/cart-dropdown';
 
 import { connect } from 'react-redux';
 

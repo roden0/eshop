@@ -18,5 +18,14 @@
       color: black;
       border: 1px solid black;
     }
+
+    &.inverted {
+        background-color: white;
+        color: black;
+      &:hover {
+        background-color: black;
+        color: white;
+      }
+    }
   }
   
