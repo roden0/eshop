@@ -26,12 +26,6 @@
             margin-bottom: 15px;
         }
 
-        .price {
-            &:after{
-                content: "€ ";
-            }
-        }
-
     }
     .custom-button{
         width: 80%;

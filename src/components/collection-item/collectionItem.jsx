@@ -20,7 +20,7 @@ const CollectionItem = ({item, addItem}) => {
             <span className="name">
                 {name}
             </span>
-            <span className="price">
+            <span className="price currency">
                 {price}
             </span>
         </footer>
