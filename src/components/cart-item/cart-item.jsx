@@ -10,7 +10,7 @@ export const CartItem = ({item:{ imageUrl, price, name, quantity }}) => (
                 {name}
             </p>
             <p className="quantity">
-                {quantity}x<span className="currency">{price}</span> = <span className="price currency">{price * quantity}</span>
+                x{quantity} <span className="price currency">{price * quantity}</span>
             </p>
         </section>
     </li>
