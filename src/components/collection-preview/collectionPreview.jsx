@@ -4,8 +4,10 @@ import './collectionPreview.scss';
 
 import CollectionItem from '../collection-item/collectionItem';
 
+const ITEM_AMOUNT = 4;
+
 const CollectionPreview = ({title, items}) => (
-    <div className="collection-preview">
+    <li className="collection-preview">
         <header>
             <h1>
             {title.toUpperCase()}
@@ -14,12 +16,12 @@ const CollectionPreview = ({title, items}) => (
 
         <ul className="preview">
             {items
-            .filter((item,idx)=>idx < 4)
+            .filter((item,idx)=>idx < ITEM_AMOUNT)
             .map(item=>(
                 <CollectionItem key={item.id} item={item} />
             ))}
         </ul>
-    </div>
+    </li>
 );
 
 export default CollectionPreview;
