@@ -4,7 +4,7 @@ import './collectionPreview.scss';
 
 import CollectionItem from '../collection-item/collectionItem';
 
-const ITEM_AMOUNT = 4;
+const VISIBLE_ITEM_AMOUNT = 4;
 
 const CollectionPreview = ({title, items}) => (
     <li className="collection-preview">
@@ -16,7 +16,7 @@ const CollectionPreview = ({title, items}) => (
 
         <ul className="preview">
             {items
-            .filter((item,idx)=>idx < ITEM_AMOUNT)
+            .filter((item,idx)=>idx < VISIBLE_ITEM_AMOUNT)
             .map(item=>(
                 <CollectionItem key={item.id} item={item} />
             ))}

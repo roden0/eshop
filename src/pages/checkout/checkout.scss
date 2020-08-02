@@ -27,9 +27,14 @@
         margin: 0;
     }
 
-    .total {
-        margin-top: 2em;
-        margin-left: auto;
-        font-size: 2em;
-      }
+    .checkout-footer{
+        width: 100%;
+        text-align: right;
+        .total {
+            margin-top: 2em;
+            margin-left: auto;
+            font-size: 2em;
+          }
+
+    }
 }
