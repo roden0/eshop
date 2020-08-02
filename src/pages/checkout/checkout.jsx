@@ -22,6 +22,9 @@ const CheckoutPage = ({items, totalPrice}) =>(
                 items.map(item=>(<CheckoutItem key={item.id} item={item} />))
             }
         </ul>
+        <footer className="total currency">
+            {totalPrice}
+        </footer>
     </section>
 );
 

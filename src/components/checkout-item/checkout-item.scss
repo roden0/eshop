@@ -16,10 +16,23 @@
         }
     }
 
+    .arrow {
+        cursor: pointer;
+        font-weight: bold;
+    }
+    .value {
+        margin: 0 .7em;
+    }
+
     .name,
     .quantity,
     .price {
         width: 23%;
+    }
+
+    .remove {
+        font-size: 2em;
+        cursor: pointer;
     }
 
 
