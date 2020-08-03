@@ -15,6 +15,8 @@ const firebaseConfig = {
 
 export const createUserProfileDocument = async (userAuth, data) => {
     try{
+        console.log('FIREBASE CONF');
+        console.log(firebaseConfig);
         var userRef,
         snap;
         if(userAuth){
