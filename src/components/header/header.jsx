@@ -22,7 +22,7 @@ const Header = ({ currentUser, hidden }) => (
         </LogoContainer>
         <OptionsContainer>
             <OptionLink to="/shop">
-                Shop
+                Collections
             </OptionLink>
 
             <OptionLink to="/shop">
