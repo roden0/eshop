@@ -13,37 +13,37 @@ import { createStructuredSelector } from 'reselect';
 import { selectCartHidden } from '../../redux/cart/cart-selectors';
 import { selectCurrentUser } from '../../redux/user/user-selectors';
 
-import './header.scss';
+import styled, {css} from 'styled-components';
 
 const Header = ({ currentUser, hidden }) => (
-    <header className="header">
-        <Link className="logo-container" to="/">
-            <Logo className="logo" />
-        </Link>
-        <nav className="options">
-            <Link className="option" to="/shop">
+    <HeaderContainer>
+        <LogoContainer to="/">
+            <Logo/>
+        </LogoContainer>
+        <OptionsContainer>
+            <OptionLink to="/shop">
                 Shop
-            </Link>
+            </OptionLink>
 
-            <Link className="option" to="/shop">
+            <OptionLink to="/shop">
                 Contact
-            </Link>
+            </OptionLink>
 
             {
                 currentUser ?
-                <a href="#signout" className="option" onClick={(e) =>{
+                <OptionLink as='a' href="#signout" onClick={(e) =>{
                     e.preventDefault();
                     auth.signOut();
-                } }>Sign Out</a>
+                } }>Sign Out</OptionLink>
                 :
-                <Link className="option" to="/signin">
+                <OptionLink to="/signin">
                     Sign In / Sign Up
-                </Link>
+                </OptionLink>
             }
             <CartIcon />
-        </nav>
+        </OptionsContainer>
         { hidden ? null : <CartDropDown/>}
-    </header>
+    </HeaderContainer>
 );
 
 const mapStateToProps = createStructuredSelector({
@@ -52,3 +52,34 @@ const mapStateToProps = createStructuredSelector({
 })
 
 export default connect(mapStateToProps)(Header);
+
+const HeaderContainer = styled.header`
+    height: 70px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 25px;
+`
+
+const LogoContainer = styled(Link)`
+    height: 100%;
+    width: 4.5em;
+    padding: 10px;
+`
+
+const OptionsContainer = styled.nav`
+    width: 50%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+`
+
+const OptionContainer = css`
+    cursor: pointer;
+    padding: 10px 15px;
+`
+
+const OptionLink = styled(Link)`
+    ${OptionContainer}
+`

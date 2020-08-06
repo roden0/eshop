@@ -1,13 +1,22 @@
-import {data} from './shopdata';
+import CollectionsActionTypes from './collections-types';
 
-const INITIAL_STATE = data;
+const INITIAL_STATE = {};
 
 const collectionsReducer = (state = INITIAL_STATE, action) => {
-    switch (action.type) {
-        default:
-            return state
-        break;
+    let newState;
+    try{
+        switch (action.type) {
+            case CollectionsActionTypes.UPDATE_COLLECTIONS:
+                newState = Object.assign({}, state, action.payload);
+                break;
+            default:
+                newState = state;
+            break;
+        }
+    }catch(e){
+        console.error('Collections Reducer: '+e);
     }
+    return newState;
 }
 
 export default collectionsReducer;

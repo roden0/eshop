@@ -1,6 +1,7 @@
 import * as firebase from 'firebase';
 import 'firebase/auth';
 import 'firebase/database';
+import 'firebase/firestore';
 
 const firebaseConfig = {
     apiKey: process.env.REACT_APP_FIREBASE_KEY,
@@ -15,16 +16,11 @@ const firebaseConfig = {
 
 export const createUserProfileDocument = async (userAuth, data) => {
     try{
-        console.log('FIREBASE CONF');
-        console.log(firebaseConfig);
         var userRef,
         snap;
         if(userAuth){
             userRef = firestore.doc(`users/${userAuth.uid}`);
             snap = await userRef.get();
-
-            console.log(snap);
-            console.log(snap.exists);
 
             if(!snap.exists){
                 let {displayName, email} = userAuth;
@@ -43,6 +39,46 @@ export const createUserProfileDocument = async (userAuth, data) => {
     }
     return userRef;
 };
+
+/**
+ * Used to set at firestore items
+ * @param {String} key 
+ * @param {Array} items 
+ */
+export const addCollectionToFirestore = async (key, items) =>{
+    const collectionRef =  firestore.collection(key);
+    const batch = firestore.batch();
+    items.forEach(item => {
+        const newDocRef = collectionRef.doc();
+        batch.set(newDocRef, item);
+    });
+
+    return await batch.commit()
+}
+
+const addCollectionRouteName = doc => {
+        
+    const { title, items } = doc.data();
+
+    return {
+        routeName: encodeURI(title.toLowerCase()),
+        id: doc.id,
+        title,
+        items
+    }
+}
+
+const setCollectionTitleAsKey = (accumulator, collection) =>{
+    accumulator[collection.title.toLowerCase()] = collection;
+    return accumulator;
+}
+
+export const convertCollectionsSnapshotToMap = (collections) =>{
+
+    const transformedCollection = collections.docs.map(addCollectionRouteName);
+
+    return transformedCollection.reduce(setCollectionTitleAsKey,{});
+}   
 
 firebase.initializeApp(firebaseConfig);
 

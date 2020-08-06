@@ -1,13 +1,20 @@
 import React from 'react';
 
-import './homepage.scss';
+import styled from 'styled-components';
 
 import Mosaic from '../components/mosaic/mosaic';
 
 const HomePage = () => (
-    <div className="page homepage">
+    <HomePageContainer>
         <Mosaic />
-    </div>
+    </HomePageContainer>
 );
 
 export default HomePage;
+
+const HomePageContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px 80px;
+`

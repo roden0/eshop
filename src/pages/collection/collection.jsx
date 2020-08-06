@@ -12,14 +12,14 @@ import './collection.scss';
 const CollectionPage = ({ match , collection}) =>{
     const { title, items } = collection;
     return (
-    <section className="page collection-page">
-        <header>
+    <article className="collection-container">
+        <header className="collection-title">
             <h2>{title}</h2>
         </header>
         <ul className="collection-items">
             {items.map(item=>(<CollectionItem key={item.id} item={item}/>))}
         </ul>
-    </section>
+    </article>
 )}
 
 const mapStateToProps = (state, ownProps) => ({
