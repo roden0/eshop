@@ -14,31 +14,40 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_MEASUREMENT
 };
 
-export const createUserProfileDocument = async (userAuth, data) => {
-    try{
-        var userRef,
-        snap;
-        if(userAuth){
-            userRef = firestore.doc(`users/${userAuth.uid}`);
-            snap = await userRef.get();
+export const checkAuth = () => {
+    return new Promise((resolve, reject)=>{
+        const unsuscribe = auth.onAuthStateChanged(auth=>{
+            unsuscribe();
+            resolve(auth)
+        }, reject)
+    });
+}
 
-            if(!snap.exists){
-                let {displayName, email} = userAuth;
-                let createdAt = new Date();
-
-                await userRef.set({
-                    displayName,
-                    email,
-                    createdAt,
-                    ...data
-                });
-            }
-        }
-    }catch(e){
-        console.error(`FIREBASE@createUserProfileDocument: ${e}`);
+export const createUserProfileDocument = async (userAuth, additionalData) => {
+    if (!userAuth) return;
+  
+    const userRef = firestore.doc(`users/${userAuth.uid}`);
+  
+    const snapShot = await userRef.get();
+  
+    if (!snapShot.exists) {
+      const { displayName, email } = userAuth;
+      const createdAt = new Date();
+      try {
+        await userRef.set({
+          displayName,
+          email,
+          createdAt,
+          ...additionalData
+        });
+      } catch (error) {
+        console.error('error creating user', error.message);
+      }
     }
+  
     return userRef;
-};
+  };
+  
 
 /**
  * Used to set at firestore items
@@ -56,6 +65,10 @@ export const addCollectionToFirestore = async (key, items) =>{
     return await batch.commit()
 }
 
+/**
+ * 
+ * @param {*} doc 
+ */
 const addCollectionRouteName = doc => {
         
     const { title, items } = doc.data();
@@ -68,11 +81,20 @@ const addCollectionRouteName = doc => {
     }
 }
 
+/**
+ * 
+ * @param {*} accumulator 
+ * @param {*} collection 
+ */
 const setCollectionTitleAsKey = (accumulator, collection) =>{
     accumulator[collection.title.toLowerCase()] = collection;
     return accumulator;
 }
 
+/**
+ * 
+ * @param {*} collections 
+ */
 export const convertCollectionsSnapshotToMap = (collections) =>{
 
     const transformedCollection = collections.docs.map(addCollectionRouteName);
@@ -85,12 +107,12 @@ firebase.initializeApp(firebaseConfig);
 export const auth = firebase.auth();
 export const firestore = firebase.firestore();
 
-const provider = new firebase.auth.GoogleAuthProvider();
+export const googleProvider = new firebase.auth.GoogleAuthProvider();
 
-provider.setCustomParameters({
+googleProvider.setCustomParameters({
     promt: 'select_account'
 });
 
-export const signInWithGoogle = () => auth.signInWithPopup(provider);
+export const signInWithGoogle = () => auth.signInWithPopup(googleProvider);
 
 export default firebase;
