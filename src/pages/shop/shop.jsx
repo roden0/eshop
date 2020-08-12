@@ -15,6 +15,8 @@ class ShopPage extends React.Component {
     }
 
     render () {
+        console.log('SHOP PAGE');
+        console.log(this.props);
         const { match } = this.props;
         return(
             <section className="shop-page page">

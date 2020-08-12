@@ -1,8 +1,6 @@
 import { createSelector } from 'reselect';
 
-export const selectCollections = state => { 
-    return state.collections
-};
+export const selectCollections = state => state.collections;
 
 export const selectIsCollectionsFetching = createSelector(
     [selectCollections],
@@ -11,20 +9,20 @@ export const selectIsCollectionsFetching = createSelector(
 
 export const selectCollectionItems = createSelector(
     [selectCollections],
-    collections => collections.items
+    collections => collections.list
 );
 
 export const selectCollectionKey = createSelector(
     [selectCollections],
-    collections => collections ? Object.keys(collections).map(key => collections[key]) : []
+    collections => collections.list ? Object.keys(collections.list).map(key => collections.list[key]) : []
 );
 
 export const selectCollection = param => createSelector(
     [selectCollections],
-    collections => collections ? collections[param] : null
+    collections => collections.list ? collections.list[param] : null
 );
 
 export const selectIsCollectionsLoaded = createSelector(
     [selectCollections],
-    collections => !!collections
+    collections => !!collections.list
 );

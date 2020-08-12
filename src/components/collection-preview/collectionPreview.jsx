@@ -10,7 +10,9 @@ const CollectionPreview = ({title, items}) => (
     <li className="collection-preview">
         <header>
             <h1>
-            {title.toUpperCase()}
+                <a href={`collections/${title.toLowerCase()}`}>
+                    {title.toUpperCase()}
+                </a>
             </h1>
         </header>
 

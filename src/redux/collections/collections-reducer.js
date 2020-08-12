@@ -1,7 +1,7 @@
 import CollectionsActionTypes from './collections-types';
 
 const INITIAL_STATE = {
-    collection: null,
+    list: null,
     isCollectionFetching: false,
     errorMessage: null
 };
@@ -20,7 +20,7 @@ const collectionsReducer = (state = INITIAL_STATE, action) => {
                 newState = {
                     ...state,
                     isCollectionFetching: false,
-                    collection: action.payload
+                    list: action.payload
                 };
             break;
             case CollectionsActionTypes.FETCH_COLLECTIONS_ERROR:
