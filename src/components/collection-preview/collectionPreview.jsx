@@ -1,18 +1,18 @@
 import React from 'react';
 
+import { withRouter } from 'react-router-dom';
+
 import './collectionPreview.scss';
 
 import CollectionItem from '../collection-item/collectionItem';
 
 const VISIBLE_ITEM_AMOUNT = 4;
 
-const CollectionPreview = ({title, items}) => (
+const CollectionPreview = ({title, items, history, match}) => (
     <li className="collection-preview">
-        <header>
-            <h1>
-                <a href={`collections/${title.toLowerCase()}`}>
-                    {title.toUpperCase()}
-                </a>
+        <header className="collection-name">
+            <h1 className="title" onClick={() => history.push(`${match.url}/${title.toLowerCase()}`)}>
+                {title}
             </h1>
         </header>
 
@@ -26,4 +26,4 @@ const CollectionPreview = ({title, items}) => (
     </li>
 );
 
-export default CollectionPreview;
+export default withRouter(CollectionPreview);

@@ -1,22 +1,16 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import { createStructuredSelector } from 'reselect';
-
+import React, { useContext } from 'react';
+import MosaicContext from '../../contexts/mosaic/mosaic-context';
 import './mosaic.scss';
 import MosaicItem from '../mosaic-item/mosaic-item';
 
-import { selectMosaicSections } from '../../redux/mosaic/mosaic-selectors';
-
-const Mosaic = ({sections}) => (
+const Mosaic = () => {
+  const {sections} = useContext(MosaicContext);
+  return(
   <div className="mosaic">
       {sections.map( ({id, ...otherProps}) =>(
           <MosaicItem key={id} {...otherProps} />
       ) )}
   </div>
-);
+)};
 
-const mapStateToProps = createStructuredSelector({
-  sections: selectMosaicSections
-});
-
-export default connect(mapStateToProps)(Mosaic);
+export default Mosaic;

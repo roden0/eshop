@@ -4,13 +4,17 @@ import './cart-item.scss';
 
 export const CartItem = ({item:{ imageUrl, price, name, quantity }}) => (
     <li className="cart-item">
-        <img className="image" src={imageUrl} load="lazy" alt=""/>
+        <figure className="image">
+            <img src={imageUrl} load="lazy" alt=""/>
+        </figure>
+        
         <section className="details">
             <p className="name">
                 {name}
             </p>
+            <span className="price currency">{price * quantity}</span>
             <p className="quantity">
-                x{quantity} <span className="price currency">{price * quantity}</span>
+                x{quantity}
             </p>
         </section>
     </li>

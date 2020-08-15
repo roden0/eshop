@@ -4,13 +4,20 @@
     margin: 0 0 3%;
   
     .title {
-      font-size: 28px;
-      margin-bottom: 25px;
+      cursor: pointer;
+      &:hover{
+        color: #666;
+        &:after{
+          content: "+";
+        }
+      }
+      font-size: 1.8em;
     }
   
     .preview {
       display: flex;
       justify-content: space-between;
     }
+    border-bottom: thin solid #666;
   }
   

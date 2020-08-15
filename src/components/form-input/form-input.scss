@@ -21,7 +21,7 @@ $main-color: black;
     width: 100%;
     border: none;
     border-radius: 0;
-    border-bottom: 1px solid $sub-color;
+    border-bottom: thin solid $sub-color;
 
     &:focus {
       outline: none;
