@@ -49,17 +49,26 @@ const Header = ({ currentUser }) => {
 export default Header;
 
 const HeaderContainer = styled.header`
-    height: 70px;
+    height: 5em;
     width: 100%;
     display: flex;
     justify-content: space-between;
-    margin-bottom: 25px;
+    margin-bottom: 2em;
+
+    @media screen and (max-width: 700px){
+        height: 3em;
+        margin-bottom: 2%;
+    }
 `
 
 const LogoContainer = styled(Link)`
     height: 100%;
     width: 4.5em;
     padding: 10px;
+
+    @media screen and (max-width: 700px){
+        width: 3.3em;
+    }
 `
 
 const OptionsContainer = styled.nav`

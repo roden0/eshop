@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import './App.css';
+
+import { GlobalStyle } from './globalStyles';
+
 import { Switch, Route, Redirect } from 'react-router-dom';
 
 import Header from './components/header/header';
@@ -30,6 +32,7 @@ const App = ()=> {
   });
     return(
       <div className="app">
+      <GlobalStyle/>
       <Header currentUser={currentUser} />
       <Switch>
         <Route exact path="/" component={HomePage} />
