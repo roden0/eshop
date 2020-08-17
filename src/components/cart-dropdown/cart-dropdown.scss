@@ -21,10 +21,19 @@
       flex-direction: column;
       overflow: auto;
       padding: 0 5%;
+      @media screen and (max-width: 700px){
+        flex-direction: row;
+        flex-wrap: wrap;
+      }
     }
   
     button {
       margin-top: auto;
+    }
+
+    @media screen and (max-width: 700px){
+      width: 90%;
+      height: 130vw;
     }
   }
   
