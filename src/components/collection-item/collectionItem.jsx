@@ -13,9 +13,11 @@ const CollectionItem = ({item}) => {
 
     return(
     <li className="collection-item">
-        <figure load="lazy"
-        style={{backgroundImage:`url(${imageUrl})`}}
-        className="image">
+        <figure className="image">
+            <img alt={name} load="lazy" src={imageUrl} />
+            <CustomButton inverted onClick={()=>{addItem(item)}}>
+                Add to cart
+            </CustomButton>
         </figure>
         <footer className="collection-footer">
             <span className="name">
@@ -25,9 +27,6 @@ const CollectionItem = ({item}) => {
                 {price}
             </span>
         </footer>
-        <CustomButton inverted onClick={()=>{addItem(item)}}>
-            Add to cart
-        </CustomButton>
     </li>
 )};
 
