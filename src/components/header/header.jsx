@@ -1,15 +1,18 @@
-import React, { useContext } from 'react';
+import React, { useContext, lazy, Suspense } from 'react';
 import {Link} from 'react-router-dom';
 import { ReactComponent as Logo } from '../../assets/human.svg';
 
 import CartIcon from '../cart-icon/cart-icon';
-import CartDropDown from '../cart-dropdown/cart-dropdown';
 
 import { CartContext } from '../../providers/cart/cart-provider';
 
 import { auth } from '../../firebase/firebase.utils';
 
 import styled, {css} from 'styled-components';
+
+import Spinner from '../../components/spinner/spinner';
+
+const CartDropDown = lazy(()=>import('../cart-dropdown/cart-dropdown'));
 
 const Header = ({ currentUser }) => {
 
@@ -42,7 +45,7 @@ const Header = ({ currentUser }) => {
             <CartIcon />
             
         </OptionsContainer>
-        { hidden ? null : <CartDropDown/>}
+        { hidden ? null : <Suspense fallback={<Spinner/>}><CartDropDown/></Suspense>}
     </HeaderContainer>
 )};
 
