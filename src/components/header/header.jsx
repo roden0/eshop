@@ -49,7 +49,7 @@ const Header = ({ currentUser }) => {
     </HeaderContainer>
 )};
 
-export default Header;
+export default React.memo(Header);
 
 const HeaderContainer = styled.header`
     height: 5em;

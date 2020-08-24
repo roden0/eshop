@@ -1,7 +1,7 @@
 # eShop Client
 A React eCommerce application client.
 Auth is done by Firebase w/ Google Login button.
-It uses React Hooks and Redux Sagas and Stripe payments at the checkout.
+It uses React Hooks and Context API with Stripe payments (demo).
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 

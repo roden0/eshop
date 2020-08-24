@@ -6,7 +6,7 @@ import { CartContext } from '../../providers/cart/cart-provider';
 
 import './cart-dropdown.scss';
 
-import { CartItem } from '../cart-item/cart-item';
+import CartItem from '../cart-item/cart-item';
 import CustomButton from '../custom-button/custom-button';
 
 const CartDropDown = ({history}) => {

@@ -26,4 +26,4 @@ const ShopPage = ({match})=> {
     
 }
 
-export default ShopPage;
+export default React.memo(ShopPage);

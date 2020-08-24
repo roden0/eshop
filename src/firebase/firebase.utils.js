@@ -14,6 +14,7 @@ const firebaseConfig = {
     measurementId: process.env.REACT_APP_MEASUREMENT
 };
 
+
 export const checkAuth = () => {
     return new Promise((resolve, reject)=>{
         const unsuscribe = auth.onAuthStateChanged(auth=>{
@@ -23,6 +24,11 @@ export const checkAuth = () => {
     });
 }
 
+/**
+ * Create user on firestore with auth object and additional data
+ * @param {*} userAuth 
+ * @param {*} additionalData 
+ */
 export const createUserProfileDocument = async (userAuth, additionalData) => {
     if (!userAuth) return;
   

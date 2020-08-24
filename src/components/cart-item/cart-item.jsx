@@ -19,3 +19,5 @@ export const CartItem = ({item:{ imageUrl, price, name, quantity }}) => (
         </section>
     </li>
 )
+
+export default React.memo(CartItem);

@@ -23,4 +23,4 @@ const CheckoutItem = ({ item })=>{
     </li>
 )};
 
-export default CheckoutItem;
+export default React.memo(CheckoutItem);

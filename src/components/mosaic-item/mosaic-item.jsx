@@ -22,4 +22,4 @@ const MosaicItem = ({ title, imageUrl, size="normal", history, linkUrl, match })
     </article>
 );
 
-export default withRouter(MosaicItem);
+export default withRouter(React.memo(MosaicItem));
